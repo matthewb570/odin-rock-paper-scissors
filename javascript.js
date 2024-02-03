@@ -43,38 +43,44 @@ btnScissors.addEventListener("click", playRound);
 
 function playRound(event) {
 
+    const divComputerSelection = document.querySelector("#divComputerSelection");
+    const divResult = document.querySelector("#divResult");
+    // const divScore = document.querySelector("#divScore");
+
     const playerSelection = event.target.textContent;
     const computerSelection = getComputerChoice();
 
+    divComputerSelection.textContent = "Computer played " + computerSelection + ".";
+
     if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-        console.log("Tie! Both players played " + computerSelection + ".");
+        divResult.textContent = "Tie! Both players played " + computerSelection + ".";
         return null;
     } else if (playerSelection.toLowerCase() === "rock") {
         if (computerSelection.toLowerCase() === "paper") {
-            console.log("You lose! Paper beats Rock");
+            divResult.textContent = "You lose! Paper beats Rock.";
             return false;
         } else {
-            console.log("You win! Rock beats Scissors");
+            divResult.textContent = "You win! Rock beats Scissors.";
             return true;
         }
     } else if (playerSelection.toLowerCase() === "paper") {
         if (computerSelection.toLowerCase() === "scissors") {
-            console.log("You lose! Scissors beats Paper");
+            divResult.textContent = "You lose! Scissors beats Paper.";
             return false;
         } else {
-            console.log("You win! Paper beats Rock")
+            divResult.textContent = "You win! Paper beats Rock.";
             return true;
         }
     } else if (playerSelection.toLowerCase() === "scissors") {
         if (computerSelection.toLowerCase() === "rock") {
-            console.log("You lose! Rock beats Scissors");
+            divResult.textContent = "You lose! Rock beats Scissors.";
             return false;
         } else {
-            console.log("You win! Scissors beats Paper");
+            divResult.textContent = "You win! Scissors beats Paper.";
             return true;
         }
     } else {
-        console.log(playerSelection + " isn't a valid option. Please try again.");
+        divResult.textContent = playerSelection + " isn't a valid option. Please try again.";
         return null;
     }
 }
