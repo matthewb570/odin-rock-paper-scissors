@@ -1,54 +1,19 @@
-let playerScore = 0;
-let computerScore = 0;
-
 const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
+
+const divScore = document.querySelector("#divScore");
+const divComputerSelection = document.querySelector("#divComputerSelection");
+const divResult = document.querySelector("#divResult");
 
 btnRock.addEventListener("click", playRound);
 btnPaper.addEventListener("click", playRound);
 btnScissors.addEventListener("click", playRound);
 
-// game();
-
-// function game() {
-    
-//     let playerScore = 0;
-//     let computerScore = 0;
-    
-//     let gamesRemaining = 5;
-//     while (gamesRemaining > 0) {
-//         const playerSelection = prompt("Rock, paper, or scissors?");
-//         const computerSelection = getComputerChoice();
-//         console.log(computerSelection);
-
-//         const roundResult = playRound(playerSelection, computerSelection);
-//         if (roundResult !== null) {
-//             if (roundResult) {
-//                 playerScore++;
-//             } else {
-//                 computerScore++;
-//             }
-//             gamesRemaining--;
-//         }
-//     }
-
-//     if (playerScore > computerScore) {
-//         console.log("You win!");
-//     } else if (playerScore < computerScore) {
-//         console.log("You lose!");
-//     } else {
-//         console.log("Tie!");
-//     }
-
-//     console.log("Player: " + playerScore + ", Computer: " + computerScore);
-// }
+let playerScore = 0;
+let computerScore = 0;
 
 function playRound(event) {
-
-    const divComputerSelection = document.querySelector("#divComputerSelection");
-    const divResult = document.querySelector("#divResult");
-    const divScore = document.querySelector("#divScore");
 
     const playerSelection = event.target.textContent;
     const computerSelection = getComputerChoice();
@@ -92,8 +57,7 @@ function playRound(event) {
         divScore.textContent += winnerString;
         playerScore = 0;
         computerScore = 0;
-    }
-    
+    }  
 }
 
 function getComputerChoice() {
@@ -110,14 +74,14 @@ function getRandomIntegerInRange(min, max) {
 
 function checkEndOfGame() {
     
-    let winnerString = "";
+    let winnerString;
 
-    if (playerScore === 5 || computerScore === 5) {
-        if (playerScore === 5) {
-            winnerString = " --- Player wins!";
-        } else {
-            winnerString =  " --- Computer wins!";
-        }
+    if (playerScore === 5) {
+        winnerString = " --- Player wins!";
+    } else if (computerScore === 5) {
+        winnerString = " --- Computer wins!";
+    } else {
+        winnerString = "";
     }
 
     return winnerString;
