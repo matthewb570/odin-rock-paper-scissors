@@ -1,39 +1,50 @@
-game();
+const btnRock = document.querySelector("#btnRock");
+const btnPaper = document.querySelector("#btnPaper");
+const btnScissors = document.querySelector("#btnScissors");
 
-function game() {
+btnRock.addEventListener("click", playRound);
+btnPaper.addEventListener("click", playRound);
+btnScissors.addEventListener("click", playRound);
+
+// game();
+
+// function game() {
     
-    let playerScore = 0;
-    let computerScore = 0;
+//     let playerScore = 0;
+//     let computerScore = 0;
     
-    let gamesRemaining = 5;
-    while (gamesRemaining > 0) {
-        const playerSelection = prompt("Rock, paper, or scissors?");
-        const computerSelection = getComputerChoice();
-        console.log(computerSelection);
+//     let gamesRemaining = 5;
+//     while (gamesRemaining > 0) {
+//         const playerSelection = prompt("Rock, paper, or scissors?");
+//         const computerSelection = getComputerChoice();
+//         console.log(computerSelection);
 
-        const roundResult = playRound(playerSelection, computerSelection);
-        if (roundResult !== null) {
-            if (roundResult) {
-                playerScore++;
-            } else {
-                computerScore++;
-            }
-            gamesRemaining--;
-        }
-    }
+//         const roundResult = playRound(playerSelection, computerSelection);
+//         if (roundResult !== null) {
+//             if (roundResult) {
+//                 playerScore++;
+//             } else {
+//                 computerScore++;
+//             }
+//             gamesRemaining--;
+//         }
+//     }
 
-    if (playerScore > computerScore) {
-        console.log("You win!");
-    } else if (playerScore < computerScore) {
-        console.log("You lose!");
-    } else {
-        console.log("Tie!");
-    }
+//     if (playerScore > computerScore) {
+//         console.log("You win!");
+//     } else if (playerScore < computerScore) {
+//         console.log("You lose!");
+//     } else {
+//         console.log("Tie!");
+//     }
 
-    console.log("Player: " + playerScore + ", Computer: " + computerScore);
-}
+//     console.log("Player: " + playerScore + ", Computer: " + computerScore);
+// }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(event) {
+
+    const playerSelection = event.target.textContent;
+    const computerSelection = getComputerChoice();
 
     if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
         console.log("Tie! Both players played " + computerSelection + ".");
